@@ -17,7 +17,6 @@
     "slinkity": "^1.0.0-canary.0"
   },
   "dependencies": {
-    "@h5web/app": "^10.0.0",
     "esm": "^3.2.25"
   }
 }
