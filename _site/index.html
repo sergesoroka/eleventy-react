@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="img/png" href="/images/favicon.png" />
+    <meta name="description" content="To eleventy and beyond!" />
+    <meta property="og:image" content="/images/og-image-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Slinkity" />
+    <meta property="og:title" />
+    <meta property="og:description" content="To eleventy and beyond!" />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson/Atkinson-Hyperlegible-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson/Atkinson-Hyperlegible-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson/Atkinson-Hyperlegible-Italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson/Atkinson-Hyperlegible-BoldItalic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/@root/styles/index.scss" />
+    <title>It&#39;s Slinkity time</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+
+      <a href="/deployment">Deployment</a>
+
+      <a href="/about">About</a>
+      <a href="/react">React Component</a>
+    </nav>
+    <main>
+      <h1>It&#39;s Slinkity time</h1>
+      <details>
+        <summary>☝️ Who generated that heading?</summary>
+        <p>
+          That heading came from a wrapper layout. If you check out this page's
+          source (<code></code
+          >), you'll notice some frontmatter applied between those
+          <code> --- </code>
+          blocks:
+        </p>
+        <dl>
+          <dt>title:</dt>
+          <dd>
+            The title we'll apply as the page heading and the browser tab title.
+            You'll see this applied using
+            <code>{`It&#39;s Slinkity time`}</code>
+            in the layout file described below 👇
+          </dd>
+          <dt>layout:</dt>
+          <dd>
+            The name of the layout file to apply. In this case,
+            <code>layout: layout</code>
+            translates to
+            <code>_includes/layout.njk</code>
+            since 11ty looks in the _includes folder by default.
+          </dd>
+        </dl>
+        <p>
+          You'll notice this page is wrapped in a layout. This pulls in a few
+          parameters using
+          <a href="https://www.11ty.dev/docs/data-cascade/"
+            >11ty's data cascade:</a
+          >
+        </p>
+        <ul>
+          <li>
+            <code>title </code>
+            uses the "title" attribute from our page's front matter.
+          </li>
+          <li>
+            <code>content | safe </code>
+            renders our page.
+          </li>
+        </ul>
+      </details>
+      <p>If you're reading this from your browser... congrats! You just built (or dev server-ed) you're first Slinkity site 👊</p>
+<h2>Component shortcodes</h2>
+<p>With <a href="https://www.11ty.dev/docs/shortcodes/">component shortcodes</a>, you can insert components into any static template that 11ty supports. Just tell us the path to the component and how / if we should <a href="https://slinkity.dev/docs/partial-hydration/">&quot;hydrate&quot; that component with JS</a>, and you're off to the interactivity races.</p>
+<h2>Styling</h2>
+<p>Did you see that grid background fade into view? Yeah, we think it's pretty cool too. We pulled it off using a few lines of CSS under the <code>/styles</code> directory.</p>
+<p>We invite you to head over there and start breaking things! You'll see near-instant feedback to your changes thanks to Vite's hot module reloading setup.</p>
+<details>
+  <summary>H-M-What now?</summary>
+  <p>
+    This is a new way to send file changes to the browser. When using the dev server, we'll <em>avoid refreshing the page</em> when you edit HMR-supported file types (styles for instance). Instead, we'll tell the browser to just reload that single resoruce and immediately show you your changes. More on this in <a href="https://vitejs.dev/guide/features.html#hot-module-replacement">Vite's documentation.</a>
+  </p>
+  <p>
+    This is especially useful when styling stateful components. For instance, say you're editing a dropdown's styles for when it's in the "open" state.
+  </p>
+  <ul>
+    <li>Without HMR: the page refreshes, causing the dropdown to close on each style edit 😢</li>
+    <li>With HMR: our stylesheet reloads without refreshing the page. This means our dropdown stays open as we tweak our styles ❤️</li>
+  </ul>
+</details>
+<details>
+  <summary>How are those stylesheets applied?</summary>
+  <p>
+    Each stylesheet is loaded onto the page from a layout file (<code>src/_includes/layout.njk</code>) using a regular <code>link</code> tag like so: <code>link rel="stylesheet" href="/@root/styles/index.scss"</code>
+  </p>
+  <p>
+    Theres 2 important takeaways here:
+  </p>
+  <ol>
+    <li>We use the <code>@root</code> import alias to import from the root of our project. Check out <a href="https://slinkity.dev/docs/import-aliases/">our docs on import aliases</a> for more details.</li>
+    <li>We leave that <code>.scss</code> extension as-is. Vite scans through our html files for exotic file extensions like this. If it knows how to process an extension, it'll transform that file on-the-fly into something the browser can understand. And if you're looking around for some SCSS plugin we're applying, no need! SCSS support comes out-the-box with Vite. You can also configure your CSS setup of choice by following <a href="https://vitejs.dev/guide/features.html#css">Vite's styling docs.</a></li>
+  </ol>
+</details>
+
+    </main>
+  </body>
+</html>

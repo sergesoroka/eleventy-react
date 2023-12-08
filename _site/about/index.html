@@ -1,0 +1,16 @@
+<h2>React Component</h2>
+<slinkity-root data-id="_vvBkr"><!--slinkity-ssr _vvBkr--></slinkity-root><script type="module">import load from "slinkity/client/load";
+      
+      const props = {};
+      
+    const target = document.querySelector('slinkity-root[data-id="_vvBkr"]');
+    Promise.race([
+      load({ target, options: "" })
+    ]).then(async function () {
+      const [{ default: Component }, { default: renderer }] = await Promise.all([
+        import("C:/Users/serge/Projects/11ty-react/my-slinkity-site/src/_islands/Page.jsx"),
+        import("@slinkity/react/client"),
+      ]);
+      renderer({ Component, target, props, slots: {"default":""}, isClientOnly: false
+    });
+  });</script>
